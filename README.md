@@ -12,7 +12,8 @@ dependenci.....
 - rofi (to launch your sexy apps)
 - kitty (cuteeeee terminal)
 - polybar (world isnt good without bar......,,,,)
-
+- hurmit nerd font (I LOVE ITTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT)
+- 
   sexy beautiful previews.... O_O
 
 <img width="1366" height="768" alt="2026-04-30-113218" src="https://github.com/user-attachments/assets/679c0565-5c46-4abe-bb40-2500063fe28e" />
