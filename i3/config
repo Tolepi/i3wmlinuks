@@ -1,0 +1,127 @@
+# =============================================================
+#  _  _____                      _     _            _   
+# | | |___ / __      ___ __ ___  | |   (_)_ __  _   _| | __
+# | |   |_ \ \ \ /\ / / '_ ` _ \ | |   | | '_ \| | | | |/ /
+# | |  ___) | \ V  V /| | | | | || |___| | | | | |_| |   < 
+# |_| |____/   \_/\_/ |_| |_| |_||_____|_|_| |_|\__,_|_|\_\
+# 
+# FINAL_EDITION_V420_COMPLETE_O_O
+# =============================================================
+
+set $mod Mod4
+font pango:Hurmit Nerd Font Mono
+
+# --- WINDOW BEHAVIOR (DA_FLOATER_LOGIC) ---
+# Make everything float because tiling is for squares O_O
+for_window [class=".*"] floating enable
+for_window [class=".*"] border pixel 3
+for_window [class=".*"] move position center
+
+# taek cool screenshots so yu can impress your crush and make her marry you!!!
+# full cool ass shot
+bindsym $mod+Ctrl+S exec --no-startup-id scrot /home/nyasuu/%Y-%m-%d-%H%M%S.png
+
+# region shot tho idk if yu want this 0_0
+bindsym --release $mod+Alt+S exec --no-startup-id scrot -s /home/nyasuu/%Y-%m-%d-%H%M%S.png
+
+
+# Mouse logic
+floating_modifier $mod
+focus_follows_mouse yes
+
+# if polybar is soooo good why there isnt a polybar 2
+bindsym $mod+Shift+p exec --no-startup-id polybar
+
+# reload config because its cool to do with keys
+bindsym $mod+Shift+c exec i3-msg reload
+
+# --- COLOR_PALETTE (INDUSTRIAL_GREY_v2) ---
+set $bg-retro       #c0c0c0
+set $fg-retro       #000000
+set $border-active  #000080
+set $border-inactive #808080
+
+# class                 border           backgr.          text          indicator       child_border
+client.focused          $border-active   $border-active   #ffffff       #000080         $border-active
+client.focused_inactive $border-inactive $border-inactive #808080       #808080         $border-inactive
+client.unfocused        $border-inactive $bg-retro        #444444       #444444         $border-inactive
+client.urgent           #ff0000          #ff0000          #ffffff       #ff0000         #ff0000
+
+# --- CORE_BINDS (THE_CLASSICS) ---
+bindsym $mod+Return      exec kitty
+bindsym $mod+q           kill
+bindsym $mod+d           exec rofi -show drun -p "WAHT???"
+bindsym $mod+Shift+r     restart
+bindsym $mod+Shift+e     exec "i3-nagbar -t warning -m 'U SURE?? O_O system will go bye-bye...' -B 'YEAH!!' 'i3-msg exit'"
+
+# --- FOCUS_CONTROLS (WHERE_AM_I???) ---
+bindsym $mod+j           focus left
+bindsym $mod+k           focus down
+bindsym $mod+l           focus up
+bindsym $mod+semicolon   focus right
+bindsym $mod+Left        focus left
+bindsym $mod+Down        focus down
+bindsym $mod+Up          focus up
+bindsym $mod+Right       focus right
+
+# --- MOVE_CONTROLS (DRAG_DEM_WINDOWZ) ---
+bindsym $mod+Shift+j     move left
+bindsym $mod+Shift+k     move down
+bindsym $mod+Shift+l     move up
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# --- WORKSPACES (THE_ROOMS) ---
+set $ws1 "1:NET"
+set $ws2 "2:CODE"
+set $ws3 "3:IRC"
+set $ws4 "4:FILES"
+set $ws5 "5:MEDIA"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# --- LAYOUT_CONTROLS (EVEN_THOUGH_WE_FLOAT) ---
+bindsym $mod+h           split h
+bindsym $mod+v           split v
+bindsym $mod+f           fullscreen toggle
+bindsym $mod+s           layout stacking
+bindsym $mod+w           layout tabbed
+bindsym $mod+e           layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space       focus mode_toggle
+
+# --- RESIZE_MODE (BIGGER_SMALLER_TEZT???) ---
+mode "RESIZE_THE_BOX_O_O" {
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "RESIZE_THE_BOX_O_O"
+
+# --- MULTIMEDIA (VOLUME_STUFF) ---
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp   exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+# --- AUTOSTART_CRAP ---
+exec_always --no-startup-id feh --bg-fill /home/nyasuu/Descargas/windowsjapan.png
+exec_always --no-startup-id polybar retro

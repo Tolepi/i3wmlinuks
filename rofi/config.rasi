@@ -1,0 +1,27 @@
+configuration {
+    font: "Terminus 10";
+    show-icons: false;
+    display-run: "COMMAND?? >";
+    display-drun: "APP?? >";
+    display-window: "WHERE?? >";
+}
+
+* {
+    bg: #c0c0c0;
+    fg: #000000;
+    border-color: #808080;
+}
+
+window {
+    background-color: @bg;
+    border: 3;
+    padding: 2;
+    height: 9;
+}
+
+element selected {
+    background-color: @selected-bg;
+    text-color: @selected-fg;
+}
+
+@theme "~/.config/rofi/retro-styleig.rasi"
